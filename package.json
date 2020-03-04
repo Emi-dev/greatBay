@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Emi-dev/greatBay#readme",
   "dependencies": {
+    "inquirer": "^7.0.5",
     "mysql": "^2.18.1"
   }
 }
