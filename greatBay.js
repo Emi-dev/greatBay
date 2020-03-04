@@ -1,6 +1,33 @@
-var mysql = require("mysql");
+const mysql = require("mysql");
+const inquirer = require("inquirer");
 
-var connection = mysql.createConnection({
+const employeeData = await inquirer.prompt([
+  {
+    type: "list",
+    message: "Would you like to bid or add item",
+    choices: ["Email", "Home Phone", "Cell Phone", "Text"],
+    name: "communication"
+  }]);
+
+  switch(employeeData.role) { // switch by the role (Manager or Engineer or Intern)
+      case "Manager":
+          const managerData = await inquirer.prompt(questions.manager);
+          const manager = new Manager(employeeData.name, id, `${employeeData.name.replace(/\s/g, "")}@abc.com`, managerData.officeNumber);
+          employeeCards += managerCard(manager);
+          break;
+      case "Engineer":
+          const engineerData = await inquirer.prompt(questions.engineer);
+          const engineer = new Engineer(employeeData.name, id, `${employeeData.name.replace(/\s/g, "")}@abc.com`, engineerData.github);
+          employeeCards += engineerCard(engineer);
+          break;
+      case "Intern":
+          const internData = await inquirer.prompt(questions.intern);
+          const intern = new Intern(employeeData.name, id, `${employeeData.name.replace(/\s/g, "")}@abc.com`, internData.school);
+          employeeCards += internCard(intern);
+          break;
+  }
+
+const connection = mysql.createConnection({
   host: "localhost",
 
   // Your port; if not 3306
@@ -22,7 +49,7 @@ connection.connect(function(err) {
 
 function createProduct() {
   console.log("Inserting a new product...\n");
-  var query = connection.query(
+  const query = connection.query(
     "INSERT INTO products SET ?",
     {
       flavor: "Rocky Road",
@@ -43,7 +70,7 @@ function createProduct() {
 
 function updateProduct() {
   console.log("Updating all Rocky Road quantities...\n");
-  var query = connection.query(
+  const query = connection.query(
     "UPDATE products SET ? WHERE ?",
     [
       {
