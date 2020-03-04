@@ -1,0 +1,23 @@
+{
+  "name": "greatBay",
+  "version": "1.0.0",
+  "description": "Great Bay",
+  "main": "greatBay.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Emi-dev/greatBay.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Emi-dev/greatBay/issues"
+  },
+  "homepage": "https://github.com/Emi-dev/greatBay#readme",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}
