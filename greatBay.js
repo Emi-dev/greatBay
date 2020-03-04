@@ -1,31 +1,32 @@
 const mysql = require("mysql");
 const inquirer = require("inquirer");
 
-const employeeData = await inquirer.prompt([
+const auctionQ = inquirer.prompt([
   {
     type: "list",
-    message: "Would you like to bid or add item",
-    choices: ["Email", "Home Phone", "Cell Phone", "Text"],
-    name: "communication"
-  }]);
-
-  switch(employeeData.role) { // switch by the role (Manager or Engineer or Intern)
-      case "Manager":
-          const managerData = await inquirer.prompt(questions.manager);
-          const manager = new Manager(employeeData.name, id, `${employeeData.name.replace(/\s/g, "")}@abc.com`, managerData.officeNumber);
-          employeeCards += managerCard(manager);
-          break;
-      case "Engineer":
-          const engineerData = await inquirer.prompt(questions.engineer);
-          const engineer = new Engineer(employeeData.name, id, `${employeeData.name.replace(/\s/g, "")}@abc.com`, engineerData.github);
-          employeeCards += engineerCard(engineer);
-          break;
-      case "Intern":
-          const internData = await inquirer.prompt(questions.intern);
-          const intern = new Intern(employeeData.name, id, `${employeeData.name.replace(/\s/g, "")}@abc.com`, internData.school);
-          employeeCards += internCard(intern);
-          break;
+    message: "Would you like to bid or post item?",
+    choices: ["Bid", "Post"],
+    name: "userAction"
+  },
+  {
+    type: "input",
+    message: "Enter your user ID",
+    name: "userID"
   }
+]);
+
+switch(auctionQ.userAction) {
+    case "Bid":
+        const managerData = await inquirer.prompt(questions.manager);
+        const manager = new Manager(employeeData.name, id, `${employeeData.name.replace(/\s/g, "")}@abc.com`, managerData.officeNumber);
+        employeeCards += managerCard(manager);
+        break;
+    case "Post":
+        const engineerData = await inquirer.prompt(questions.engineer);
+        const engineer = new Engineer(employeeData.name, id, `${employeeData.name.replace(/\s/g, "")}@abc.com`, engineerData.github);
+        employeeCards += engineerCard(engineer);
+        break;
+}
 
 const connection = mysql.createConnection({
   host: "localhost",
