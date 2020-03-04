@@ -7,6 +7,7 @@ CREATE TABLE auctions (
     id INT NOT NULL AUTO_INCREMENT,
     item_name VARCHAR(100) NULL,
     category VARCHAR(45) NULL,
+    auctioneerId INT NOT NULL,
     starting_bid INT default 0,
     highest_bid INT default 0,
     PRIMARY KEY (id)
